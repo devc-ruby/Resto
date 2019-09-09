@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text,AsyncStorage, StyleSheet } from 'react-native';
+import { View, Text, AsyncStorage, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
 
 export default class Setting extends Component {
@@ -16,10 +16,10 @@ export default class Setting extends Component {
 
     render() {
         return (
-            <View style = {styles.container} > 
+            <View style={styles.container} >
                 <Button
                     title="Logout"
-                    onPress = {this.logOut} >
+                    onPress={this.logOut} >
                 </Button>
             </View>
         );
@@ -27,8 +27,8 @@ export default class Setting extends Component {
 }
 const styles = StyleSheet.create({
     container: {
-        flex :1,
-        justifyContent : "center",
+        flex: 1,
+        justifyContent: "center",
         alignItems: "center"
     }
 });

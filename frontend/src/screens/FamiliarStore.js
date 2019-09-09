@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text ,StyleSheet} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 export default class FamiliarStore extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ export default class FamiliarStore extends Component {
 
   render() {
     return (
-      <View style = {styles.container} >
+      <View style={styles.container} >
         <Text> FamiliarStore </Text>
       </View>
     );
@@ -18,8 +18,8 @@ export default class FamiliarStore extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-      flex :1,
-      justifyContent : "center",
-      alignItems: "center"
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
   }
 });

@@ -10,7 +10,7 @@ export default class NearByScreen extends Component {
 
   render() {
     return (
-      <View style = {styles.container}>
+      <View style={styles.container}>
         <Text> NearBy </Text>
       </View>
     );
@@ -18,8 +18,8 @@ export default class NearByScreen extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-      flex :1,
-      justifyContent : "center",
-      alignItems: "center"
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
   }
 });

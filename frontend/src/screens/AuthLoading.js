@@ -26,8 +26,8 @@ export default class AuthLoading extends Component {
     render() {
         return (
             <View>
-                <ActivityIndicator 
-                animating = {this.state.isLoading} />
+                <ActivityIndicator
+                    animating={this.state.isLoading} />
             </View>
         );
     }
