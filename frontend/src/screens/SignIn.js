@@ -31,6 +31,7 @@ export default class SignIn extends Component {
                 // iosClientId: YOUR_CLIENT_ID_HERE,
                 scopes: ['profile', 'email'],
             });
+            console.log(result);
 
             if (result.type === 'success') {
                 await this.setState({ isLoading: true });
