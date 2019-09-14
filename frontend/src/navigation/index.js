@@ -8,7 +8,7 @@ import {
 import { MaterialIcons, MaterialCommunityIcons, Entypo, FontAwesome } from '@expo/vector-icons';
 
 //import screen // it will be replaced when we have container
-import SignUp from '../screens/SignUp';
+
 import SignIn from '../screens/SignIn';
 import NearBy from '../screens/NearBy';
 import FamiliarStore from '../screens/FamiliarStore';
@@ -30,7 +30,7 @@ const stackFamiliarStore = createStackNavigator({
     FamiliarStore: {
         screen: FamiliarStore,
         navigationOptions: {
-            header: null
+            headerTitle: "FamiliarStore"
         }
     }
 });
@@ -39,7 +39,7 @@ const stackPeopleInterest = createStackNavigator({
     PeopleInterest: {
         screen: PeopleInterest,
         navigationOptions: {
-            header: null
+            headerTitle: "PeopleInterest"
         }
     }
 });
@@ -48,7 +48,7 @@ const stackSetting = createStackNavigator({
     Setting: {
         screen: Setting,
         navigationOptions: {
-            header: null
+            headerTitle: "Setting"
         }
     }
 });
@@ -57,7 +57,6 @@ const tabNavigation = createBottomTabNavigator({
     NearBy: {
         screen: stackNearBy,
         navigationOptions: {
-            header: null,
             title: "NearBy",
             tabBarIcon: ({ tintColor }) => <MaterialCommunityIcons name="map-marker" size={26} color={tintColor} />
         }
@@ -65,7 +64,6 @@ const tabNavigation = createBottomTabNavigator({
     FamiliarStore: {
         screen: stackFamiliarStore,
         navigationOptions: {
-            header: null,
             title: "FamiliarStore",
             tabBarIcon: ({ tintColor }) => <Entypo name="feather" size={26} color={tintColor} />
         }
@@ -73,7 +71,6 @@ const tabNavigation = createBottomTabNavigator({
     PeopleInterest: {
         screen: stackPeopleInterest,
         navigationOptions: {
-            header: null,
             title: "PeopleInterest",
             tabBarIcon: ({ tintColor }) => <FontAwesome name="users" size={26} color={tintColor} />
         }
@@ -81,7 +78,6 @@ const tabNavigation = createBottomTabNavigator({
     Setting: {
         screen: stackSetting,
         navigationOptions: {
-            header: null,
             title: "Setting",
             tabBarIcon: ({ tintColor }) => <MaterialIcons name="settings" size={26} color={tintColor} />
         }
@@ -95,7 +91,7 @@ const tabNavigation = createBottomTabNavigator({
 const stackAuth = createStackNavigator({
     AuthLoading: AuthLoading,
     SignIn: SignIn,
-    SignUp: SignUp,
+    
     tabNavigation: tabNavigation
 }, {
         initialRouteName: 'AuthLoading',
