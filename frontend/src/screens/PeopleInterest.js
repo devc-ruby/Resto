@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, FlatList, } from 'react-native';
+import { View,
+         Text, 
+         StyleSheet,
+         FlatList,
+         ActivityIndicator } from 'react-native';
 import CardInterest from '../components/CardInterest';
 import { data } from '../data';
 
@@ -7,13 +11,20 @@ export default class PeopleInterest extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: data
+            data: data,
+            isLoading : true
         };
     }
 
+  
+    componentDidMount = async() =>{
+        
+    }
     render() {
         return (
-            <View style={styles.container} >
+            this.state.isLoading
+            ? <ActivityIndicator size='large' style={styles.container} />
+            : <View style={styles.container} >
                 <FlatList
                     data={this.state.data}
                     renderItem={({ item, index }) => {
