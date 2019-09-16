@@ -1,0 +1,122 @@
+export const data = [
+  {
+    "FIELD1": 20,
+    "service_id": 3469740592050032600,
+    "store_id": 8441805907250927000,
+    "category": "Mass Merchant",
+    "merchant_name": "Nguyễn Thị Hồng Quyên",
+    "merchant_address": "122 Lò Đúc, Phường Đống Mác, Quận Hai Bà Trưng, Hà Nội, VIỆT NAM",
+    "store_name": "Bánh Canh Ghẹ Tươi",
+    "store_address": "122 Lò Đúc, Phường Đống Mác, Quận Hai Bà Trưng, Hà Nội, VIỆT NAM",
+    "longitude": 106.73882990000001,
+    "latitude": 10.706002999999999,
+    "thumbnail" : "https://images.unsplash.com/photo-1498462440456-0dba182e775b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+  },
+  
+  
+  {
+    "FIELD1": 1258,
+    "service_id": 2182594663430634800,
+    "store_id": 2573453245817070000,
+    "category": "Mass Merchant",
+    "merchant_name": "Hộ Kinh Doanh Living Well Deli",
+    "merchant_address": "523  Hoàng Sa, Phường 8, Quận 3, Thành Phố Hồ Chí Minh, VIỆT NAM",
+    "store_name": "Living Well Deli",
+    "store_address": "523 Hoàng Sa, Phường 8, Quận 3, Thành Phố Hồ Chí Minh, VIỆT NAM",
+    "longitude": 106.68727790000001,
+    "latitude": 10.7941355,
+    "thumbnail" : "https://images.unsplash.com/photo-1498462440456-0dba182e775b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+  },
+  {
+    "FIELD1": 1259,
+    "service_id": 2182594663430634800,
+    "store_id": 6632453165307869000,
+    "category": "Mass Merchant",
+    "merchant_name": "Living Well Deli",
+    "merchant_address": "523 Hoàng Sa, Phường 8, Quận 3, Thành Phố Hồ Chí Minh, VIỆT NAM",
+    "store_name": "livingwelldeli1",
+    "store_address": "MOMOTQSP20181119",
+    "longitude": 106.68727790000001,
+    "latitude": 10.7941355,
+    "thumbnail" : "https://images.unsplash.com/photo-1498462440456-0dba182e775b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+  },
+  {
+    "FIELD1": 1260,
+    "service_id": 2182594663430634800,
+    "store_id": 5350193640712646000,
+    "category": "Mass Merchant",
+    "merchant_name": "Hộ Kinh Doanh Living Well Deli",
+    "merchant_address": "523  Hoàng Sa, Phường 8, Quận 3, Thành Phố Hồ Chí Minh, VIỆT NAM",
+    "store_name": "Living Well Lounge",
+    "store_address": "2 Tản Viên, Phường 2, Quận Tân Bình, Thành Phố Hồ Chí Minh, VIỆT NAM",
+    "longitude": 106.68727790000001,
+    "latitude": 10.7941355,
+    "thumbnail" : "https://images.unsplash.com/photo-1498462440456-0dba182e775b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+  },
+  {
+    "FIELD1": 1261,
+    "service_id": 2243844528580542000,
+    "store_id": 8884597123571761000,
+    "category": "Mass Merchant",
+    "merchant_name": "HT MART",
+    "merchant_address": "16 Trung Hòa, Trung Hoà, Cầu Giấy, Hà Nội, Việt Nam",
+    "store_name": "htmart16",
+    "store_address": "MOMOJ6DB20181204",
+    "longitude": 106.67477009999999,
+    "latitude": 10.77496,
+    "thumbnail" : "https://images.unsplash.com/photo-1498462440456-0dba182e775b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+  },
+  {
+    "FIELD1": 1262,
+    "service_id": 7630373312878770000,
+    "store_id": 4611978024685160000,
+    "category": "Mass Merchant",
+    "merchant_name": "MILESTONE COFFEE",
+    "merchant_address": "210B1 Nguyễn Khắc Nhu, Phường Cô Giang, Quận 1, Thành Phố Hồ Chí Minh, VIỆT NAM",
+    "store_name": "milestonecoffee123",
+    "store_address": "MOMO7RNW20180817",
+    "longitude": 106.7145808,
+    "latitude": 10.808477,
+    "thumbnail" : "https://images.unsplash.com/photo-1498462440456-0dba182e775b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+  },
+  {
+    "FIELD1": 1263,
+    "service_id": 7630373312878770000,
+    "store_id": 5117037726457548000,
+    "category": "Mass Merchant",
+    "merchant_name": "HỘ KINH DOANH NHỮNG CHẶNG ĐƯỜNG CÀ PHÊ",
+    "merchant_address": "210B1 Nguyễn Khắc Nhu, Phường Cô Giang, Quận 1, Thành Phố Hồ Chí Minh, VIỆT NAM",
+    "store_name": "MILESTONE COFFEE",
+    "store_address": "210B1 Nguyễn Khắc Nhu, Phường Cô Giang, Quận 1, Thành Phố Hồ Chí Minh, VIỆT NAM",
+    "longitude": 106.7145808,
+    "latitude": 10.808477,
+    "thumbnail" : "https://images.unsplash.com/photo-1498462440456-0dba182e775b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+  },
+  {
+    "FIELD1": 1264,
+    "service_id": 8742885012138412000,
+    "store_id": 1763181083841064000,
+    "category": "Mass Merchant",
+    "merchant_name": "Lecastella And Leecha Huỳnh Thúc Kháng",
+    "merchant_address": "7 Huỳnh Thúc Kháng, Phường Láng Hạ, Quận Đống Đa, Hà Nội, VIỆT NAM",
+    "store_name": "Lecastella And Leecha Lê Đại Hành",
+    "store_address": "21 Lê Đại Hành, Phường Lê Đại Hành, Quận Hai Bà Trưng, Hà Nội, VIỆT NAM",
+    "longitude": 105.78385049999999,
+    "latitude": 20.9859587,
+    "thumbnail" : "https://images.unsplash.com/photo-1498462440456-0dba182e775b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+  },
+  {
+    "FIELD1": 1265,
+    "service_id": 8742885012138412000,
+    "store_id": 1568927035530649600,
+    "category": "Mass Merchant",
+    "merchant_name": "Lecastella And Leecha Huỳnh Thúc Kháng",
+    "merchant_address": "số 7 Huỳnh Thúc Kháng, Phường Láng Hạ, Quận Đống Đa, Hà Nội, VIỆT NAM",
+    "store_name": "lecastella1",
+    "store_address": "MOMOE57E20181017",
+    "longitude": 105.78385049999999,
+    "latitude": 20.9859587,
+    "thumbnail" : "https://images.unsplash.com/photo-1498462440456-0dba182e775b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+  },
+  
+ ]
