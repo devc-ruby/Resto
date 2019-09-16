@@ -6,9 +6,6 @@ import { OauthKey_ios } from '../iosClientid';
 import {CONSTANT} from '../components'
 import * as Google from 'expo-google-app-auth';
 
-
-
-
 export default class SignIn extends Component {
     constructor(props) {
         super(props);
@@ -34,6 +31,7 @@ export default class SignIn extends Component {
                 iosClientId: OauthKey_ios,
                 scopes: ['profile', 'email'],
             });
+            console.log(result);
 
             if (result.type === 'success') {
                 await this.setState({ isLoading: true });

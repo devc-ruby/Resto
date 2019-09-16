@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, FlatList, ScrollView } from 'react-native';
 import STYLE from './styleConstants'
 
 const COLOR = STYLE.color 
@@ -10,6 +10,7 @@ export default Card = (props) => {
     const [tabFeebBack, setTabFeebBack] = useState(styles.tabUnactive)
     const {storeData} = props
     switchTab = (bool) => {
+        console.log(isDescription)
         if(bool){
             setDescription(bool)
             setTabDescription(styles.tabActive)
@@ -31,7 +32,7 @@ export default Card = (props) => {
                 </View>
                 <View style = {styles.property}>
                     <Image style = {styles.icon} source={require('../../assets/icon/clock-circular.png')}/>
-                    <Text>{detailInfo.active_time}</Text>
+                    <Text>{detailInfo.services}</Text>
                 </View>
             </View>
         )
@@ -40,22 +41,25 @@ export default Card = (props) => {
 
     function Feedback(props){
         const {fb} = props
+        console.log(fb)
         return (
             <View>
                 <View style = {{...STYLE.flexRow}}>
                     <Image  
                         style = {{width : 50, height : 50, borderRadius: 25}} 
-                        src={{uri:'http://i.imgur.com/random.jpg'}}
+                        source={{uri: fb.profile_photo_url}}
                     />
                     <Text style = {{fontSize : 23}}>
-                        {fb.reviewer}
+                        {fb.author_name}
                     </Text>
                 </View>
-                <Text style = {{fontSize : 20}}>{fb.content_review}</Text>
+                <Text style = {{fontSize : 15}}>{ ((fb.text).length > 100) ? 
+                    (((fb.text).substring(0,100-3)) + '...') : 
+                    fb.text }
+                </Text>
             </View>
         )
     }
-
 
     return (
         <View style = {styles.container}>
@@ -63,10 +67,6 @@ export default Card = (props) => {
                 <View style = {styles.imageContainer}>
                     <Image
                         style={styles.image}
-                        source={require('../../assets/thecoffeehouse.jpg')}
-                    />
-                    <Image 
-                        style={styles.imageOpacity}
                         source={require('../../assets/thecoffeehouse.jpg')}
                     />
                 </View>
@@ -88,14 +88,15 @@ export default Card = (props) => {
                 <View >
                     {   
                          isDescription ? 
-                            <Description detailInfo = {storeData.detail}/> 
-                            :      
-                            //  storeData.feedbacks.map( (fb,i) => <Feedback fb = {fb}/> ) 
-                            <FlatList
-                            data={storeData.feedbacks}
-                            renderItem={({ item }) => <Feedback fb={item} />}
-                            keyExtractor={ (item,i) => i}
-                          />
+                            <Description detailInfo = {storeData}/> 
+                            : 
+                            <ScrollView showsVerticalScrollIndicator={false}>
+                                <FlatList
+                                data={storeData.review}
+                                renderItem={({ item }) => <Feedback fb={item} />}
+                                keyExtractor={ (item,i) => i}  
+                                />
+                            </ScrollView>     
                     }
                 </View>
         </View>
@@ -153,6 +154,7 @@ const styles = StyleSheet.create({
     property : {
         ...STYLE.flexRow,
     },
+
     icon : {
         width : 30,
         height : 30,
