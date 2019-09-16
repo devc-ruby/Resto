@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, AsyncStorage, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, AsyncStorage, ActivityIndicator, Image, TouchableOpacity, SafeAreaView } from 'react-native';
 import { SocialIcon } from 'react-native-elements';
 import { OauthKey } from '../androidClientid';
+import { OauthKey_ios } from '../iosClientid';
+import {CONSTANT} from '../components'
 import * as Google from 'expo-google-app-auth';
 
 
@@ -11,7 +13,8 @@ export default class SignIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: false
+            isLoading: false,
+            status : 2,
         };
     }
 
@@ -23,12 +26,12 @@ export default class SignIn extends Component {
             console.log(error)
         }
     };
-    // thằng này khi nào config redux thunk sẽ đưa vào midleware
+    // thằng này khi nào config redux thunk sẽ đưa vào middleware
     signInWithGoogleAsync = async () => {
         try {
             const result = await Google.logInAsync({
                 androidClientId: OauthKey,
-                // iosClientId: YOUR_CLIENT_ID_HERE,
+                iosClientId: OauthKey_ios,
                 scopes: ['profile', 'email'],
             });
 
@@ -43,31 +46,110 @@ export default class SignIn extends Component {
                 console.log("Login Fail")
             }
         } catch (e) {
-            console.log(e)
+            console.error(e)
         }
     }
 
+    switchIcon = (index) => {
+        if( status !== index){
+
+        }
+    }
     render() {
         return (
-            this.state.isLoading
-                ? <ActivityIndicator animating={true} size='large' style={{ flex: 1 }} />
-                : (<View style={styles.container} >
-                    <SocialIcon
-                        title='Sign In With Google'
-                        button
-                        type='google'
-                        onPress={this.signInWithGoogleAsync}
-                    />
-                </View>)
+                this.state.isLoading
+                    ? <ActivityIndicator animating={true} size='large' style={{ flex: 1 }} />
+                    : (
+
+                    <View style={styles.container} >
+                        <Text style = {{fontSize : 30, fontWeight : "bold", alignSelf : "flex-start"}}>Sign In</Text>
+                        <Text style = {{fontSize : 20, marginTop : 30, color : CONSTANT.color.gray}}>Choose your way to sign in</Text>
+                        <View style = {{marginVertical : 120,alignSelf: "stretch" , justifyContent: "space-around" ,...CONSTANT.flexRow}}>
+                            <TouchableOpacity
+                                    onPress = {this.signInWithGoogleAsync}
+                                >
+                                <View style = {styles.containerUnactive}>
+                                    <Image 
+                                        style  = {styles.iconUnactive} 
+                                        resizeMode="contain" 
+                                        source = {require('../../assets/icon/instagram.png')}
+                                    />
+                                </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                onPress = {this.signInWithGoogleAsync}
+                            >
+                                <View style = {styles.containerActive}>
+                                    <Image 
+                                        style  = {styles.iconActive} 
+                                        resizeMode="contain" 
+                                        source = {require('../../assets/icon/search.png')}
+                                    />
+                                </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <View style = {styles.containerUnactive}>
+                                    <Image 
+                                        style  = {styles.iconUnactive} 
+                                        resizeMode="contain" 
+                                        source = {require('../../assets/icon/twitter.png')}
+                                        opacity = {0.4}
+                                    />
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        <View style = {CONSTANT.flexRow}>
+                            <Text style = {{color : CONSTANT.color.gray}}>DON'T HAVE AN ACCOUNT?</Text><Text style = {{color : CONSTANT.color.pink}}>SIGN UP</Text>
+                        </View>
+                    </View>
+
+                    )
 
 
         );
+        
+
     }
 }
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: "column",
+        justifyContent: "center",
+        alignItems : "center",
+        padding : 20
+    },
+
+    iconActive : {
+        width : 60,
+        height : 60
+    },
+    iconUnactive : {
+        width : 50,
+        height : 50
+    },
+    containerActive : {
+        width : 114,
+        height : 114,
+        borderRadius : 114/2,
+        backgroundColor : "#fff",
+        shadowColor : "rgba(252, 94, 255, 0.6)",
+        shadowOffset: {
+            width: 0,
+            height: 8,
+        },
+        shadowOpacity: 0.58,
+        shadowRadius: 20.00,
+        ...CONSTANT.flexRow,
         justifyContent: "center"
+
+        // elevation: 24,
+    },
+    containerUnactive : {
+        opacity : 0.4
     }
 });
+
+/* Ellipse */
+
+
+

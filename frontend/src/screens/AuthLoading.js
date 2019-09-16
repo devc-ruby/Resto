@@ -17,7 +17,9 @@ export default class AuthLoading extends Component {
                 userData: data,
                 isLoading: false
             })
-            this.props.navigation.navigate(userData ? 'tabNavigation' : 'SignIn')
+            // this.props.navigation.navigate(userData ? 'tabNavigation' : 'SignIn')
+            this.props.navigation.navigate('SignIn')
+
         } catch (error) {
             console.log("something went wrong" + `${error}`);
         }

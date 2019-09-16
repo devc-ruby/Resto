@@ -6,7 +6,7 @@ import {
 } from 'react-navigation';
 //import icon-vector
 import { MaterialIcons, MaterialCommunityIcons, Entypo, FontAwesome } from '@expo/vector-icons';
-
+import {TabBar} from '../components'
 //import screen // it will be replaced when we have container
 import SignUp from '../screens/SignUp';
 import SignIn from '../screens/SignIn';
@@ -15,6 +15,7 @@ import FamiliarStore from '../screens/FamiliarStore';
 import PeopleInterest from '../screens/PeopleInterest';
 import Setting from '../screens/Setting';
 import AuthLoading from '../screens/AuthLoading';
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 
 //create stack NearBy
 const stackNearBy = createStackNavigator({
@@ -87,8 +88,25 @@ const tabNavigation = createBottomTabNavigator({
         }
     },
 
-}, {
-        initialRouteName: "NearBy"
+}, {  
+    tabBarComponent: props => {
+        return (
+            <View style={{
+                position: 'absolute',
+                left: 0,
+                right: 0,
+                bottom: 10,
+            }}>
+                <TabBar{...props} />
+            </View>
+        )
+    },
+    tabBarOptions: {
+        activeTintColor: "#4F4F4F",
+        inactiveTintColor: "#fff"
+    },
+    initialRouteName: "NearBy"
+
     });
 
 //create stack Auth
