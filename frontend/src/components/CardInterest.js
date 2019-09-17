@@ -29,11 +29,11 @@ export default class CardInterest extends Component {
                 <View style = {styles.avatar}>
                     <Image 
                         style = {{width : 40, height: 40, borderRadius: 50, marginRight: 5}} 
-                        source = {{uri : item.image.length > 0 ? item.image[0].url : imageNotFound }} />
+                        source = {{uri : item.image.length > 0 ? item.review[0].profile_photo_url : imageNotFound }} />
                     <Text 
                         numberOfLines = {1} 
                         style = {styles.cardTitle}> 
-                        {item.name_store}
+                        {item.review[0].author_name}
                     </Text>
                 </View>
                 <View style = {styles.thumbnail} >
