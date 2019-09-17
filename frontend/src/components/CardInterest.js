@@ -7,10 +7,11 @@ import {
     Image,
     TouchableOpacity
 } from 'react-native';
+import {imageNotFound} from '../data'
 
 const { width, height } = Dimensions.get("window");
 const CARD_WIDTH = height / 2;
-const CARD_HEIGHT = CARD_WIDTH  ;
+const CARD_HEIGHT = CARD_WIDTH * 1.2 ;
 
 export default class CardInterest extends Component {
     constructor(props) {
@@ -22,28 +23,29 @@ export default class CardInterest extends Component {
 
     render() {
         const {item, index} = this.props;
+        
         return (
             <View style={styles.container} >
                 <View style = {styles.avatar}>
                     <Image 
                         style = {{width : 40, height: 40, borderRadius: 50, marginRight: 5}} 
-                        source = {{uri : item.thumbnail }} />
+                        source = {{uri : item.image.length > 0 ? item.image[0].url : imageNotFound }} />
                     <Text 
                         numberOfLines = {1} 
-                        style = {styles.cardTitle}>
-                        Phung DaiHiep
+                        style = {styles.cardTitle}> 
+                        {item.name_store}
                     </Text>
                 </View>
                 <View style = {styles.thumbnail} >
                     <Image
-                        source = {{uri : item.thumbnail}}
+                        source = {{uri : item.image.length > 0 ? item.image[0].url : imageNotFound }}
                         style = {styles.image} />
                 </View>
                 <View style = {styles.comment} >
                     <Text>
-                    {item.store_address.length < 53
-                    ? `${item.store_address}`
-                    : `${item.store_address.substring(0,50)}...` }</Text>
+                    {item.review[0].text < 93
+                    ? `${item.review[0].text}`
+                    : `${item.review[0].text.substring(0,90)}...` }</Text>
                 </View>
                 <TouchableOpacity style = {styles.btnVisit} >
                     <Text>Visit</Text>

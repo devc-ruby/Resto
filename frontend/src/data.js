@@ -1,3 +1,4 @@
+export const imageNotFound = 'https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjArbz9-NbkAhUaUd4KHewNBicQjRx6BAgBEAQ&url=%2Furl%3Fsa%3Di%26source%3Dimages%26cd%3D%26ved%3D%26url%3Dhttps%253A%252F%252Fstackoverflow.com%252Fquestions%252F7995080%252Fhtml-if-image-is-not-found%26psig%3DAOvVaw3WUIr6oSeROofo4zlVYp--%26ust%3D1568778369892354&psig=AOvVaw3WUIr6oSeROofo4zlVYp--&ust=1568778369892354';
 export const data = [
       {
           "latitude": 10.771141,

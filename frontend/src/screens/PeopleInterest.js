@@ -12,14 +12,14 @@ export default class PeopleInterest extends Component {
         super(props);
         this.state = {
             data: data,
-            isLoading : true
+            isLoading : false
         };
     }
 
   
-    componentDidMount = async() =>{
+    // componentDidMount = async() =>{
         
-    }
+    // }
     render() {
         return (
             this.state.isLoading
@@ -37,7 +37,7 @@ export default class PeopleInterest extends Component {
                         );
                     }}
                     keyExtractor={(item, index) => {
-                        return item.FIELD1.toString()
+                        return index.toString()
                     }} >
 
                 </FlatList>
