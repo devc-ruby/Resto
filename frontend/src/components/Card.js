@@ -94,7 +94,7 @@ export default Card = (props) => {
                                 <FlatList
                                 data={storeData.review}
                                 renderItem={({ item }) => <Feedback fb={item} />}
-                                keyExtractor={ (item,i) => i}  
+                                keyExtractor={ (item,i) => i.toString()}  
                                 />
                             </ScrollView>     
                     }
