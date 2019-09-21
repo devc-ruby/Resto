@@ -17,7 +17,6 @@ import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import { Entypo } from '@expo/vector-icons';
 import {placeSearching} from '../utils/fetchAPI'
-import {data} from '../data';
 
 const { width, height } = Dimensions.get("window");
 const CARD_HEIGHT = height / 3;
@@ -34,7 +33,7 @@ export default class screens extends Component {
 			currentLocation: null,
 			isLoading: true,
 			errorMessage: null,
-			markers: data
+			markers: []
 		};
 	}
 
@@ -50,12 +49,11 @@ export default class screens extends Component {
 		const currentLocation = {
 			latitude: location.coords.latitude,
 			longitude: location.coords.longitude,
-			latitudeDelta: 0.0922,
-			longitudeDelta: 0.0421,
+			latitudeDelta: 0.008,
+			longitudeDelta: 0.008,
 		};
 		this.setState({
 			currentLocation,
-			isLoading: false
 		});
 	};
 	componentWillMount = () => {
@@ -64,15 +62,18 @@ export default class screens extends Component {
 	}
 	componentDidMount = async () => {
 		await this._getLocationAsync();
-		// const ob = {
-		// 	"distance" : "4500",
-		// 	"latitude" : this.state.currentLocation.latitude,
-		// 	"longitude" : this.state.currentLocation.longitude,
-		// 	"maxWidth" : "1000",
-		// 	"signature": "MTIzMjEzMTIzOmFwcA=="
-		// }
-		// const data = await placeSearching(ob);
-		// console.log(data)
+		const ob = {
+			"distance" : "4500",
+			"latitude" : this.state.currentLocation.latitude,
+			"longitude" : this.state.currentLocation.longitude,
+			"maxWidth" : "1000",
+			"signature": "MTIzMjEzMTIzOmFwcA=="
+		}
+		const data = await placeSearching(ob);
+		this.setState({
+			isLoading : false,
+			markers :data
+		});
 
 
 
@@ -108,26 +109,29 @@ export default class screens extends Component {
 
 	
 	render() {
+		let interpolations = []
+		if(!this.state.isLoading){
+			 interpolations = this.state.markers.map((marker, index) => {
+				const inputRange = [
+					(index - 1) * CARD_WIDTH,
+					index * CARD_WIDTH,
+					((index + 1) * CARD_WIDTH),
+				];
+				const scale = this.animation.interpolate({
+					inputRange,
+					outputRange: [1, 2.5, 1],
+					extrapolate: "clamp",
+				});
+				const opacity = this.animation.interpolate({
+					inputRange,
+					outputRange: [0.1, 1, 0.1],
+					extrapolate: "clamp",
+				});
+				
+				return { scale, opacity };
+			});
+		}
 		
-		const interpolations = this.state.markers.map((marker, index) => {
-			const inputRange = [
-				(index - 1) * CARD_WIDTH,
-				index * CARD_WIDTH,
-				((index + 1) * CARD_WIDTH),
-			];
-			const scale = this.animation.interpolate({
-				inputRange,
-				outputRange: [1, 2.5, 1],
-				extrapolate: "clamp",
-			});
-			const opacity = this.animation.interpolate({
-				inputRange,
-				outputRange: [0.1, 1, 0.1],
-				extrapolate: "clamp",
-			});
-			
-			return { scale, opacity };
-		});
 
 		return (
 			this.state.isLoading

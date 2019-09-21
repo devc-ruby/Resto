@@ -41,7 +41,7 @@ export default class CardInterest extends Component {
                         source = {{uri : item.image.length > 0 ? item.image[0].url : imageNotFound.url }}
                         style = {styles.image} />
                 </View>
-                <View style = {styles.comment} >
+                <View style = {styles.comment}>
                     <Text>
                     {item.review[0].text < 93
                     ? `${item.review[0].text}`
