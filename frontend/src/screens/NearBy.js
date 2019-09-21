@@ -16,30 +16,14 @@ import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import { Entypo } from '@expo/vector-icons';
-import { data } from '../data'
+import {placeSearching} from '../utils/fetchAPI'
+import {data} from '../data';
 
 const { width, height } = Dimensions.get("window");
 const CARD_HEIGHT = height / 3;
 const CARD_WIDTH = CARD_HEIGHT + 50;
 
-const fake_data = {
-  name_store : "The Coffee House",
-  image : [
-      "../../assets/thecoffeehouse.jpg",
-  ],
-  detail : {
-      location : "798 Sư Vạn Hạnh, Phường 12, Quận 10, Hồ Chí Minh",
-      active_time : "Cả tuần, 07:00 - 22:30",
-      website : "thecoffeehouse.com",
-  },
-  feedbacks : [
-      {
-          avatar : "https://img.cinemablend.com/filter:scale/quill/d/e/6/c/9/6/de6c96f1e9871aef148dbc51fb9a5bc90ff25314.jpg?mw=600",
-          reviewer : "Avatar",
-          content_review : "Đi từ hồi thứ 7 mà giờ mới nhớ ra để đăng lên😂😂. Chuyện là hôm đó team mình hẹn ở TCH(The Coffee House) Sư Vạn..."
-      }
-  ]
-}
+
 
 
 
@@ -80,6 +64,18 @@ export default class screens extends Component {
 	}
 	componentDidMount = async () => {
 		await this._getLocationAsync();
+		// const ob = {
+		// 	"distance" : "4500",
+		// 	"latitude" : this.state.currentLocation.latitude,
+		// 	"longitude" : this.state.currentLocation.longitude,
+		// 	"maxWidth" : "1000",
+		// 	"signature": "MTIzMjEzMTIzOmFwcA=="
+		// }
+		// const data = await placeSearching(ob);
+		// console.log(data)
+
+
+
 		// We should detect when scrolling has stopped then animate
 		// We should just debounce the event listener here
 		this.animation.addListener(({ value }) => {
@@ -109,7 +105,10 @@ export default class screens extends Component {
 		});
 	}
 
+
+	
 	render() {
+		
 		const interpolations = this.state.markers.map((marker, index) => {
 			const inputRange = [
 				(index - 1) * CARD_WIDTH,
@@ -134,7 +133,6 @@ export default class screens extends Component {
 			this.state.isLoading
 				? <ActivityIndicator size='large' style={styles.container} />
 				: <View style={styles.container}>
-					<ScrollView>
 					<MapView
 						ref={map => this.map = map}
 						provider={PROVIDER_GOOGLE}
@@ -208,7 +206,6 @@ export default class screens extends Component {
 							</TouchableOpacity>
 						)})}
 					</Animated.ScrollView>
-					</ScrollView>
 				</View>
 		);
 	}
@@ -221,12 +218,12 @@ const styles = StyleSheet.create({
 		position : "relative"
 	},
 	mapContainer : {
-		height : height/1.5,
-		marginBottom: 300,
+		height : height/2 + 30,
+		//marginBottom: 300,
 	},
 	scrollView: {
 		position: "absolute",
-		bottom: 150,
+		bottom: 60,
 		left: 0,
 		right: 0,
 		paddingVertical: 10,

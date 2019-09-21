@@ -29,7 +29,7 @@ export default class CardInterest extends Component {
                 <View style = {styles.avatar}>
                     <Image 
                         style = {{width : 40, height: 40, borderRadius: 50, marginRight: 5}} 
-                        source = {{uri : item.image.length > 0 ? item.review[0].profile_photo_url : imageNotFound }} />
+                        source = {{uri : item.image.length > 0 ? item.review[0].profile_photo_url : imageNotFound.url }} />
                     <Text 
                         numberOfLines = {1} 
                         style = {styles.cardTitle}> 
@@ -38,7 +38,7 @@ export default class CardInterest extends Component {
                 </View>
                 <View style = {styles.thumbnail} >
                     <Image
-                        source = {{uri : item.image.length > 0 ? item.image[0].url : imageNotFound }}
+                        source = {{uri : item.image.length > 0 ? item.image[0].url : imageNotFound.url }}
                         style = {styles.image} />
                 </View>
                 <View style = {styles.comment} >
