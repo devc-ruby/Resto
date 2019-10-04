@@ -1,75 +1,57 @@
 import React, { Component } from 'react';
-import { View,
-         Text, 
-         StyleSheet,
-         FlatList,
-         ActivityIndicator } from 'react-native';
+import {
+    View,
+    Text,
+    StyleSheet,
+    FlatList,
+    ActivityIndicator
+} from 'react-native';
 import CardInterest from '../components/CardInterest';
-import {placeSearching} from '../utils/fetchAPI';
-import * as Location from 'expo-location';
-import * as Permissions from 'expo-permissions';
+
+import { data } from '../data';
+import {peopleInterest} from '../data/peopleInterest';
+import { CONSTANT } from '../components';
 
 export default class PeopleInterest extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentLocation: null,
-            data: null,
-            isLoading : true,
-            errorMessage : null
+
+            data: peopleInterest.data,
+            isLoading: true
         };
     }
 
-    _getLocationAsync = async () => {
-		let { status } = await Permissions.askAsync(Permissions.LOCATION);
-		if (status !== 'granted') {
-			this.setState({
-				errorMessage: 'Permission to access location was denied',
-			});
-		}
 
-		const location = await Location.getCurrentPositionAsync({});
-		const currentLocation = {
-			"distance" : "4500",
-			"latitude" : location.coords.latitude,
-			"longitude" : location.coords.longitude,
-			"maxWidth" : "1000",
-			"signature": "MTIzMjEzMTIzOmFwcA=="
-		};
-		this.setState({
-			currentLocation,
-		});
-	};
-  
-    componentDidMount = async() =>{
-        await this._getLocationAsync()
-        const data = await placeSearching(this.state.currentLocation);
-        this.setState({
-            data,
-            isLoading: false
-        });
+    componentDidMount = async() => {
+        setTimeout( ()=> this.setState({ isLoading: false }), 3000)
     }
     render() {
         return (
-            this.state.isLoading
-            ? <ActivityIndicator size='large' style={styles.container} />
-            : <View style={styles.container} >
-                <FlatList
-                    data={this.state.data}
-                    renderItem={({ item, index }) => {
-                        return (
-                            <CardInterest
-                                {...this.state}
-                                item={item}
-                                index={index}>
-                            </CardInterest>
-                        );
-                    }}
-                    keyExtractor={(item, index) => {
-                        return index.toString()
-                    }} >
+            this.state.isLoading ?
+                <ActivityIndicator size = 'large'
+                style = {{marginTop : 300}}/> 
+            : 
+            <View style = { styles.container } >
+            <Text style = { {marginVertical: 30 ,marginLeft : 20,fontSize : 30, fontWeight : "bold", alignSelf: "flex-start", color: CONSTANT.color.pink}}>People Interest</Text>
+            <FlatList data = { this.state.data }
+            renderItem = {
+                ({ item, index }) => {
+                    return ( 
+                        <CardInterest {...this.props }
+                        item = { item }
+                        index = { index } >
+                        </CardInterest>
+                    );
+                }
+            }
+            keyExtractor = {
+                (item, index) => {
+                    return index
+                }
+            } >
 
-                </FlatList>
+            </FlatList>  
             </View>
         );
     }
@@ -77,10 +59,10 @@ export default class PeopleInterest extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection : "column",
-        justifyContent : "center",
-        alignItems : "center"
 
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "center"
     },
 
 });

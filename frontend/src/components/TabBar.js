@@ -49,8 +49,17 @@ const styles = StyleSheet.create({
         paddingVertical : 15,
         elevation: 2,
         marginHorizontal : 10,
-        backgroundColor : CONSTANT.color.pink,
+        backgroundColor : "white",
         borderRadius : CONSTANT.radius,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        
+        elevation: 6,
     },
     tabButton: { flex: 1, justifyContent: "center", alignItems: "center" }
   });

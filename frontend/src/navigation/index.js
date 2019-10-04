@@ -14,7 +14,10 @@ import NearBy from '../screens/NearBy';
 import FamiliarStore from '../screens/FamiliarStore';
 import PeopleInterest from '../screens/PeopleInterest';
 import Setting from '../screens/Setting';
+import StoreDetail from '../screens/StoreDetail';
+import STYLE from '../components/styleConstants';
 import AuthLoading from '../screens/AuthLoading';
+
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 
 //create stack NearBy
@@ -31,7 +34,7 @@ const stackFamiliarStore = createStackNavigator({
     FamiliarStore: {
         screen: FamiliarStore,
         navigationOptions: {
-            headerTitle: "FamiliarStore"
+            header: null
         }
     }
 });
@@ -40,10 +43,26 @@ const stackPeopleInterest = createStackNavigator({
     PeopleInterest: {
         screen: PeopleInterest,
         navigationOptions: {
-            headerTitle: "PeopleInterest"
+            header : null
         }
+    },
+    StoreDetail: {
+        screen: StoreDetail,
     }
 });
+
+stackPeopleInterest.navigationOptions = ({ navigation }) => {
+    let tabBarVisible = true;
+    for (let i = 0; i < navigation.state.routes.length; i++) {
+      if (navigation.state.routes[i].routeName == "StoreDetail") {
+        tabBarVisible = false;
+      }
+    }
+  
+    return {
+      tabBarVisible
+    };
+  };
 //create stack Setting
 const stackSetting = createStackNavigator({
     Setting: {
@@ -65,14 +84,12 @@ const tabNavigation = createBottomTabNavigator({
     FamiliarStore: {
         screen: stackFamiliarStore,
         navigationOptions: {
-            title: "FamiliarStore",
             tabBarIcon: ({ tintColor }) => <Entypo name="feather" size={26} color={tintColor} />
         }
     },
     PeopleInterest: {
         screen: stackPeopleInterest,
         navigationOptions: {
-            title: "PeopleInterest",
             tabBarIcon: ({ tintColor }) => <FontAwesome name="users" size={26} color={tintColor} />
         }
     },
@@ -98,8 +115,8 @@ const tabNavigation = createBottomTabNavigator({
         )
     },
     tabBarOptions: {
-        activeTintColor: "#4F4F4F",
-        inactiveTintColor: "#fff"
+        activeTintColor: STYLE.color.pink,
+        inactiveTintColor: "#aaa"
     },
     initialRouteName: "NearBy"
 
@@ -109,8 +126,9 @@ const tabNavigation = createBottomTabNavigator({
 const stackAuth = createStackNavigator({
     AuthLoading: AuthLoading,
     SignIn: SignIn,
-    
-    tabNavigation: tabNavigation
+    tabNavigation: tabNavigation,
+
+
 }, {
         initialRouteName: 'AuthLoading',
         defaultNavigationOptions: {
